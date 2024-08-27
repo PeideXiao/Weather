@@ -45,7 +45,7 @@ class SearchViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.resignFirstResponder()
+        view.endEditing(true)
     }
     
     private func navigateToDetailViewController(with detail: Detail) {
@@ -56,7 +56,7 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func search(_ sender: Any) {
-        _ = [self.cityTF, self.stateTF, self.countryTF].map({ $0?.resignFirstResponder() })
+        view.endEditing(true)
         guard cityTF.hasText else {
             Alerts.show(self, "Please enter city name.")
             return
@@ -74,7 +74,7 @@ class SearchViewController: UIViewController {
             return
         }
         
-        viewModel.fetchWeatherDetail(city: cityTF.text!, state: stateTF.text, country: countryTF.text) { [unowned self] error in
+        viewModel.fetchWeatherDetail(city: cityTF.text!.trimmingCharacters(in: .whitespacesAndNewlines), state: stateTF.text?.trimmingCharacters(in: .whitespacesAndNewlines), country: countryTF.text?.trimmingCharacters(in: .whitespacesAndNewlines)) { [unowned self] error in
             DispatchQueue.main.async {
                 if let error = error {
                     Alerts.show(self, error)
