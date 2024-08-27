@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  SearchViewModel.swift
 //  WeatherDemo
 //
 //  Created by Peide Xiao on 8/26/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewModel: NSObject {
+class SearchViewModel: NSObject {
     
     private var _detail: Detail?
     let service: Webservice = Webservice.shared

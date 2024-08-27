@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var countryTF: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
-    var viewModel: HomeViewModel = HomeViewModel()
+    var viewModel: SearchViewModel = SearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
